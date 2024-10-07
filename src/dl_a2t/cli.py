@@ -1,8 +1,9 @@
 from json import dumps
+from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Annotated
 
-from typer import FileBinaryWrite, Option, Typer
+from typer import Option, Typer
 
 from .impl.download import extract_audio
 from .impl.transcript import transcribe_audio
@@ -13,7 +14,7 @@ app = Typer()
 @app.command()
 def run(
     input_url: str,
-    output_file: FileBinaryWrite,
+    output_file: Path,
     *,
     model: Annotated[str, Option(help="Whisper model to use")] = "tiny",
 ):
@@ -28,11 +29,11 @@ def run(
         result = transcribe_audio(filename, model)
 
     if output_file.name.endswith(".json"):
-        output_file.write(dumps(result).encode())
+        output_file.write_text(dumps(result))
     elif output_file.name.endswith(".txt"):
-        output_file.write(result["text"].encode())
+        output_file.write_text(result["text"])
     elif output_file.name.endswith(".jsonl"):
-        output_file.write("\n".join(map(dumps, result["segments"])).encode())
+        output_file.write_text("\n".join(map(dumps, result["segments"])))
     else:
         raise ValueError("Output file must end with .json, .txt, or .jsonl")
 
