@@ -22,6 +22,10 @@ uv run cli.py url_of_video output_file
 * 输出为 TXT 文件：`python -m dl_a2t.run <YouTube视频URL> output.txt`
 * 输出为 JSONL 文件：`python -m dl_a2t.run <YouTube视频URL> output.jsonl`
 
+## Options
+
+- `--model`：选择 Whisper 模型大小，默认为 `tiny`
+
 ## 依赖项
 
 dl-a2t 依赖以下库：
