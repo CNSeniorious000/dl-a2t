@@ -13,21 +13,38 @@ pip install dl-a2t
 
 ## 使用
 
+处理一个视频 url：
+
 ```sh
-dl-a2t url output
+dl-a2t run url output
 ```
 
-## 输出格式
+处理一个文件，每行是一个 url：
 
-- 输出为 JSONL 文件：`dl_a2t.run <url> output.jsonl`
-- 输出为 JSON 文件：`dl_a2t.run <url> output.json`
-- 输出为 TXT 文件：`dl_a2t.run <url> output.txt`
+```sh
+dl-a2t batch input_file output_folder
+```
+
+会在 output_folder 中保存音频文件，以及保存一个 results.jsonl 文件，每行一个结果，类似这样：
+
+```jsonl
+{"url": "<input url>", "audio": "<audio file path>", "transcript": { ... }, "error": "<error traceback>"}
+{"url": "<input url>", "audio": "<audio file path>", "transcript": { ... }, "error": "<error traceback>"}
+{"url": "<input url>", "audio": "<audio file path>", "transcript": { ... }, "error": "<error traceback>"}
+```
+
+| 参数       | 类型   | 说明                           |
+| ---------- | ------ | ------------------------------ |
+| url        | str    | 输入的视频 url                 |
+| audio      | str    | 下载的音频路径                 |
+| transcript | object | Whisper 返回的字典             |
+| error      | str    | 如果出错，则为报错的 traceback |
 
 ## 其它方式
 
 ### pipx
 
-如果你安装了 `pipx`，你可以使用以下命令来安装 `dl-a2t`：
+如果你安装了 [`pipx`](https://github.com/pypa/pipx)，你可以使用以下命令来安装 `dl-a2t`：
 
 ```sh
 pipx install dl-a2t
@@ -36,13 +53,13 @@ pipx install dl-a2t
 甚至直接免安装使用：
 
 ```sh
-pipx run dl-a2t "https://..." output.json
+pipx run dl-a2t ...
 ```
 
 ### uv
 
-`uv` 有一个类似 `pipx` 的 API，你可以使用以下命令来直接使用 `dl-a2t`：
+[`uv`](https://github.com/astral-sh/uv) 有一个类似 `pipx` 的 API，你可以使用以下命令来直接使用 `dl-a2t`：
 
 ```sh
-uvx dl_a2t.run "https://..." output.json
+uvx dl-a2t ...
 ```
