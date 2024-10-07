@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Whisper models
+/whisper-model/
+
+# Caches
+/.*_cache/
+.pdm-build/
+
+# Settings
+.vscode
+.fleet
+.idea

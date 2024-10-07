@@ -1,0 +1,48 @@
+[project]
+name = "dl-a2t"
+version = "0.0.0"
+description = "Download audio from YouTube and transcribe it"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai-whisper>=20240930",
+    "typer~=0.12.5",
+    "yt-dlp~=2024.9.27",
+]
+
+[project.scripts]
+dl-a2t = "dl_a2t.cli:app"
+
+[tool.ruff]
+preview = true
+line-length = 200
+
+[tool.ruff.lint]
+extend-select = [
+    "F",    # flake8
+    "I",    # isort
+    "N",    # pep8-naming
+    "W",    # pycodestyle
+    "UP",   # pyupgrade
+    "RUF",  # ruff
+    "FURB", # refurb
+    "C4",   # flake8-comprehensions
+    "ARG",  # flake8-unused-arguments
+    "PIE",  # flake8-pie
+    "PTH",  # flake8-use-pathlib
+    "RSE",  # flake8-raise
+    "SIM",  # flake8-simplify
+    "SLF",  # flake8-self
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+includes = ["src/dl_a2t"]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff~=0.6.9",
+]
