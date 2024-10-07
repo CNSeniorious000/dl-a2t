@@ -1,10 +1,10 @@
 # dl-a2t
 
-dl-a2t 是一个从 YouTube 下载音频并转录为文本的工具。它使用 yt-dlp 下载音频，并使用 OpenAI 的 Whisper 模型进行转录。
+dl-a2t 是一个从 YouTube 下载音频并转录为文本的工具。它使用 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 下载音频，并使用 OpenAI 的 [Whisper](https://github.com/openai/whisper) 模型进行转录。
 
 ## 使用方法
 
-使用 dl-a2t 需要 Python 3.12 或更高版本。首先，确保你已经安装了 Python 和 pip。然后，使用以下命令安装 dl-a2t：
+使用 dl-a2t 需要你已经安装了 FFmpeg。使用以下命令安装 dl-a2t：
 
 ```sh
 pip install dl-a2t
