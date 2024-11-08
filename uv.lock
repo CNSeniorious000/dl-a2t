@@ -151,7 +151,7 @@ dependencies = [
     { name = "openai-whisper" },
     { name = "rich" },
     { name = "typer-slim" },
-    { name = "yt-dlp" },
+    { name = "yt-dlp", extra = ["default"] },
 ]
 
 [package.dev-dependencies]
@@ -164,7 +164,7 @@ requires-dist = [
     { name = "openai-whisper", specifier = ">=20240930" },
     { name = "rich", specifier = "~=13.9.4" },
     { name = "typer-slim", specifier = "~=0.13.0" },
-    { name = "yt-dlp", specifier = "~=2024.9.27" },
+    { name = "yt-dlp", extras = ["default"], specifier = "~=2024.11.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -749,9 +749,15 @@ wheels = [
 
 [[package]]
 name = "yt-dlp"
-version = "2024.9.27"
+version = "2024.11.4"
 source = { registry = "https://pypi.org/simple" }
-dependencies = [
+sdist = { url = "https://files.pythonhosted.org/packages/52/50/0014e9099a9dc3dec1da086e5eb5f861984a0512738bd3d3b63cedd82cbb/yt_dlp-2024.11.4.tar.gz", hash = "sha256:ed204c1b61bc563e134447766d1ab343173540799e13ebb953e887ce7dcf6865", size = 2900105 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6e/e4/e45c5067a79780954b905db4a42aa83d7aaefd91e32b18ab91c77600e668/yt_dlp-2024.11.4-py3-none-any.whl", hash = "sha256:589d51ed9f154624a45c1f0ceb3d68d0d1e2031460e8dbc62139be631c20b388", size = 3165645 },
+]
+
+[package.optional-dependencies]
+default = [
     { name = "brotli", marker = "implementation_name == 'cpython'" },
     { name = "brotlicffi", marker = "implementation_name != 'cpython'" },
     { name = "certifi" },
@@ -760,8 +766,4 @@ dependencies = [
     { name = "requests" },
     { name = "urllib3" },
     { name = "websockets" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/7d/3f/c63b11419d7adacde35b39e7e62aef1be6ce9ff3d2219fae024962ab4a53/yt_dlp-2024.9.27.tar.gz", hash = "sha256:86605542e17e2e23ad23145b637ec308133762a15a5dedac4ae50b7973237026", size = 2876534 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c6/26/5dc3a802bd85c19d3d2fa746e6b36979801e2f32a433799c57f646335a7d/yt_dlp-2024.9.27-py3-none-any.whl", hash = "sha256:2717468dd697fcfcf9a89f493ba30a3830cdfb276c09750e5b561b08b9ef5f69", size = 3148509 },
 ]
