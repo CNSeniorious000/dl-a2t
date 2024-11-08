@@ -10,7 +10,7 @@ from typer import FileText, Option, Typer
 from .impl.download import extract_audio
 from .impl.transcript import transcribe_audio
 
-app = Typer()
+app = Typer(no_args_is_help=True, add_completion=False)
 
 
 @app.command()
