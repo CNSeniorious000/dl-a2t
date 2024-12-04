@@ -1,6 +1,6 @@
 [project]
 name = "dl-a2t"
-version = "0.0.1.1"
+version = "0.0.1.2"
 description = "Download audio from YouTube and transcribe it"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -45,5 +45,5 @@ includes = ["src/dl_a2t"]
 
 [tool.uv]
 dev-dependencies = [
-    "ruff~=0.6.9",
+    "ruff~=0.8.1",
 ]
