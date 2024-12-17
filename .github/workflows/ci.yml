@@ -29,7 +29,11 @@ jobs:
         run: |
           uv run ruff format --check --diff
           uv run ruff check --diff
-
+      - name: Check types
+        if: ${{ matrix.os != 'windows' }}
+        run: |
+          yarn global add pyright
+          uv run pyright
   build:
     runs-on: ubuntu-latest
     steps:
