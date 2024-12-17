@@ -4,7 +4,7 @@ from .constants import cache_root
 def get_download_root(model: str):
     path = cache_root / "whisper" / model
     path.mkdir(exist_ok=True, parents=True)
-    return path
+    return str(path)
 
 
 def load_model(model: str):
