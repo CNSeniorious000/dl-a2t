@@ -159,10 +159,20 @@ wheels = [
 ]
 
 [[package]]
+name = "diskcache2"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/50/52/33de0d19ad9583769ef0ddde40463afcaf541a81930121aee35de870818b/diskcache2-0.1.1.tar.gz", hash = "sha256:184a266404a0723f83aec8bb433eb967a96a720c4b1b4baa4817c933b96dd203", size = 47954 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/f1/d7874696a30723551bf96d355f8996ffd8be037d385e5ba7055f9b43d36d/diskcache2-0.1.1-py3-none-any.whl", hash = "sha256:4c3a62fb7dbb7d066efae3f75d230fa04c1c22af4cd8cdd9c9ccc47d614a5da7", size = 46656 },
+]
+
+[[package]]
 name = "dl-a2t"
 version = "0.0.1.2"
 source = { editable = "." }
 dependencies = [
+    { name = "diskcache2" },
     { name = "openai-whisper" },
     { name = "rich" },
     { name = "typer-slim" },
@@ -176,6 +186,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "diskcache2", specifier = "~=0.1.1" },
     { name = "openai-whisper", specifier = ">=20240930" },
     { name = "rich", specifier = "~=13.9.4" },
     { name = "typer-slim", specifier = "~=0.15.0" },
