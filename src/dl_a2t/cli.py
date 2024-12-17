@@ -14,6 +14,30 @@ app = Typer(no_args_is_help=True, add_completion=False)
 
 
 @app.command()
+def download(
+    input_url: str,
+    output_file: Path,
+):
+    """下载音频"""
+    extract_audio(input_url, str(output_file))
+
+
+@app.command()
+def transcript(
+    audio_file: Path,
+    output_file: Path | None = None,
+    *,
+    model: Annotated[str, Option(help="Whisper model to use")] = "tiny",
+):
+    """转录音频为文本"""
+    result = transcribe_audio(str(audio_file), model)
+    if output_file:
+        output_file.write_text(dumps(result, ensure_ascii=False, indent=2) if output_file.name.endswith(".json") else result["text"], encoding="utf-8")
+    else:
+        print(result["text"])
+
+
+@app.command()
 def run(
     input_url: str,
     output_file: Path,
@@ -26,10 +50,7 @@ def run(
         extract_audio(input_url, filename)
         result = transcribe_audio(filename, model)
 
-    if output_file.name.endswith(".json"):
-        output_file.write_text(dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-    else:
-        output_file.write_text(result["text"], encoding="utf-8")
+    output_file.write_text(dumps(result, ensure_ascii=False, indent=2) if output_file.name.endswith(".json") else result["text"], encoding="utf-8")
 
 
 @app.command()
