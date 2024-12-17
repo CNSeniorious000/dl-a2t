@@ -1,5 +1,7 @@
 from typing import TypedDict, cast
 
+from ..utils.model import load_model
+
 
 class Result(TypedDict):
     text: str
@@ -7,8 +9,6 @@ class Result(TypedDict):
 
 
 def transcribe_audio(file_path: str, model="tiny"):
-    from whisper import load_model
-
-    model = load_model(model, download_root="./whisper-model")
+    model = load_model(model)
     result = model.transcribe(file_path)
     return cast(Result, result)
