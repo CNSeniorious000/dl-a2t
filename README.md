@@ -38,15 +38,15 @@ dl-a2t batch --help
 
 dl-a2t 依赖以下库：
 
--`yt-dlp`：用于下载 YouTube 视频的音频
--`OpenAI Whisper`：用于转录音频为文本
--`Typer`：用于命令行界面
+- `yt-dlp`：用于下载 YouTube 视频的音频
+- `OpenAI Whisper`：用于转录音频为文本
+- `Typer`：用于命令行界面
 
 ## 文件结构
 
 dl-a2t 的文件结构如下：
 
--`cli.py`：命令行界面
--`pyproject.toml`：项目配置文件
--`impl/download.py`：用于下载音频的实现
--`impl/transcript.py`：用于转录音频为文本的实现
+- `cli.py`：命令行界面
+- `pyproject.toml`：项目配置文件
+- `impl/download.py`：用于下载音频的实现
+- `impl/transcript.py`：用于转录音频为文本的实现
