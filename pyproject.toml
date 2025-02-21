@@ -1,6 +1,6 @@
 [project]
 name = "dl-a2t"
-version = "0.0.2.1"
+version = "0.0.2.2"
 description = "Download audio from YouTube and transcribe it"
 readme = "README.md"
 requires-python = ">=3.12"
