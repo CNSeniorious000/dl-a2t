@@ -1,0 +1,38 @@
+name: Fix uv.lock for Dependabot
+
+on:
+  push:
+    branches:
+      - "dependabot/uv/**"
+  workflow_dispatch:
+
+jobs:
+  update-lockfile:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Set up Python
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: 3.12
+      - name: Fix lockfile
+        run: uv sync
+      - name: Commit and push uv.lock if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Check if uv.lock was modified or created
+          if git diff --quiet --exit-code uv.lock; then
+              echo "uv.lock is up-to-date."
+          else
+              echo "uv.lock changed, committing updates."
+              git add uv.lock
+              git commit -m "fix `uv.lock` after dependency update"
+              git push origin HEAD:${{ github.ref_name }}
+          fi
