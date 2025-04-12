@@ -188,10 +188,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "diskcache2", specifier = "~=0.1.1" },
-    { name = "openai-whisper", specifier = "==20240930" },
+    { name = "openai-whisper", specifier = ">=20240930" },
     { name = "rich", specifier = ">=13.9.4,<14.1.0" },
     { name = "typer-slim", specifier = "~=0.15.0" },
-    { name = "yt-dlp", extras = ["default"], specifier = "==2024.12.13" },
+    { name = "yt-dlp", extras = ["default"], specifier = ">=2024.11.4,<2025.4.0" },
 ]
 
 [package.metadata.requires-dev]
