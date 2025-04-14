@@ -33,6 +33,6 @@ jobs:
           else
               echo "uv.lock changed, committing updates."
               git add uv.lock
-              git commit -m "fix `uv.lock` after dependency update"
+              git commit -m "fix \`uv.lock\` after dependency update"
               git push origin HEAD:${{ github.ref_name }}
           fi
